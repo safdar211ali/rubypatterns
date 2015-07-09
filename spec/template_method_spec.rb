@@ -15,7 +15,7 @@ describe "Template Method Pattern" do
   end
   end
   context "Warior" do
-    let(:hero) {Hero.new :warrior}
+    let(:hero) {Warrior.new }
 
     it "has default damage rating of 15" do
       expect(hero.damage).to eq(15)
@@ -26,7 +26,7 @@ describe "Template Method Pattern" do
   end
 
   context "mage" do
-    let(:hero) {Hero.new :mage}
+    let(:hero) {Mage.new }
 
     it "has default damage rating of 7" do
       expect(hero.damage).to eq(7)
