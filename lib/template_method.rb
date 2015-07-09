@@ -7,6 +7,16 @@ class Hero
     @abilities = occupation_abilities
   end
 
+  def greet
+    greeting = ["Hello"]
+    greeting << unique_greeting_line
+    greeting
+  end
+
+  def unique_greeting_line
+    raise "You must define unique_greeting_line"
+  end
+
   def damage_rating
     10
   end
@@ -26,12 +36,16 @@ end
 
 
 class Warrior <Hero
+
   def damage_rating
     15
   end
 
   def occupation_abilities
     [:strike]
+  end
+  def unique_greeting_line
+    "Warrior is ready to fight"
   end
 end
 
@@ -45,3 +59,6 @@ class Mage <Hero
     [:magic_arrow]
   end
 end
+
+m = Mage.new
+puts m.attack

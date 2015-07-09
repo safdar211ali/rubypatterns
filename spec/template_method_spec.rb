@@ -13,6 +13,9 @@ describe "Template Method Pattern" do
   it "can attack" do
     expect(hero.attack).to eq("Attacked dealing 10 damage")
   end
+    it "requires subclasses to implement unique_greeting_line" do
+      expect{hero.greet}.to raise_exception
+    end
   end
   context "Warior" do
     let(:hero) {Warrior.new }
@@ -22,6 +25,9 @@ describe "Template Method Pattern" do
     end
     it "has Strike ability" do
       expect(hero.abilities).to include(:strike)
+    end
+    it "greets other character" do
+      expect(hero.greet).to eq(["Hello","Warrior is ready to fight"])
     end
   end
 
