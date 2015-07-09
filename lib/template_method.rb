@@ -32,10 +32,10 @@ class Hero
   def initialize_stat
 
   end
-end
+ end
 
 
-class Warrior <Hero
+ class Warrior <Hero
 
   def damage_rating
     15
@@ -44,6 +44,7 @@ class Warrior <Hero
   def occupation_abilities
     [:strike]
   end
+
   def unique_greeting_line
     "Warrior is ready to fight"
   end
@@ -60,5 +61,4 @@ class Mage <Hero
   end
 end
 
-m = Mage.new
-puts m.attack
+
