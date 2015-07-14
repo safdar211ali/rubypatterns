@@ -4,18 +4,28 @@ require_relative '../lib/iterator'
 describe 'Iterator Pattern' do
 
   describe Inventory do
-it 'adds items to its collect' do
-  item1 = Item.new
-  item1.cost = 20
+    let(:inventory) { Inventory.new }
+    before :each do
+      item1 = Item.new
+      item1.cost = 20
 
-  item2 = Item.new
-  item2.cost = 10
+      item2 = Item.new
+      item2.cost = 10
 
-  inventory = Inventory.new
-  inventory.add(item1)
-  inventory.add(item2)
-  expect(inventory.items.size).to eq(2)
-end
+      inventory.add(item1)
+      inventory.add(item2)
+    end
+    it 'can be iterated through items to get total cost' do
+     iterator = InventoryIterator.new(inventory)
+     result = 0
+     while iterator.has_next?
+       result +=iterator.next.cost
+     end
+      expect(result).to eq(30)
+    end
+    it 'adds item to the collection' do
+      expect(inventory.items.size).to eq(2)
+    end
   end
   describe Item do
     let(:item) { Item.new }
