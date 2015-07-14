@@ -16,8 +16,7 @@ describe 'Iterator Pattern' do
       inventory.add(item2)
     end
     it 'can be iterated through items to get total cost' do
-      result = 0
-      inventory.each {|item| result += item.cost}
+      result = inventory.inject(0) {|sum,item| sum + item.cost}
       expect(result).to eq(30)
     end
     it 'adds item to the collection' do
