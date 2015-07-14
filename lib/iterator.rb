@@ -9,10 +9,12 @@ class Inventory
   def add(item)
     @items << item
   end
+
   def each(&block)
-   @items.each(&block)
+    @items.each(&block)
   end
 end
+
 class Item
   attr_accessor :cost
 
@@ -24,6 +26,7 @@ class Item
     cost <=>other.cost
   end
 end
+
 
 class InventoryIterator
   def initialize(inventory)
@@ -42,3 +45,13 @@ class InventoryIterator
   end
 end
 
+item1 = Item.new
+item1.cost = 20
+
+item2 = Item.new
+item2.cost = 10
+
+inventory = Inventory.new
+inventory.add(item1)
+inventory.add(item2)
+puts inventory.inject(0) { |sum, item| sum + item.cost }
