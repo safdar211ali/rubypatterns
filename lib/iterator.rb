@@ -16,10 +16,11 @@ class Inventory
 end
 
 class Item
-  attr_accessor :cost
+  attr_accessor :name,:cost
 
   def initialize
     @cost = 0
+    @name =''
   end
 
   def <=>(other)
@@ -47,11 +48,15 @@ end
 
 item1 = Item.new
 item1.cost = 20
+item1.name = 'fan'
 
 item2 = Item.new
 item2.cost = 10
+item2.name = 'table'
 
 inventory = Inventory.new
 inventory.add(item1)
 inventory.add(item2)
-puts inventory.inject(0) { |sum, item| sum + item.cost }
+
+File.open('myfile', 'w') { |file| file.write inventory.items.each  { |n| n.cost } }
+
